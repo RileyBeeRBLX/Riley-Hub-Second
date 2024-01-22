@@ -1,28 +1,13 @@
-local DrRayLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/DrRay-UI-Library/main/DrRay.lua"))()
-local window = DrRayLibrary:Load("DrRay", "Default")
-
-local tab = DrRayLibrary.newTab("", "ImageIdHere")
-
-tab.newButton("Button", "Prints Testing", function()
-    print('Testing!')
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Riley Hub", "DarkTheme")
+local Tab = Window:NewTab("Main Stuff")
+local Section = Tab:NewSection("Testing")
+Section:NewButton("Fly Gui (Testing)", "Fly Gui", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+    print("Script Executed!")
 end)
-
-tab.newToggle("Toggle", "Toggle! (prints the state)", true, function(toggleState)
-    if toggleState then
-        print("On")
-    else
-        print("Off")
-    end
-end)
-
-tab.newInput("Input", "Prints your input.", function(text)
-    print("Entered text: " .. text)
-end)
-
-tab.newKeybind("Input Key", "Press the key to start; it will be printed out.", function(key)
-    print(key)
-end)
-
-tab.newSlider("Slider", "Epic slider", 1000, false, function(num)
-    print(num)
-end)
+for theme, color in pairs(themes) do
+    Section:NewColorPicker(theme, "Change your "..theme, color, function(color3)
+        Library:ChangeColor(theme, color3)
+    end)
+end
